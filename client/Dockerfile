@@ -4,10 +4,7 @@ WORKDIR /app
 
 COPY package*.json ./
 
-RUN npm install
+RUN npm install && npm run build
 
-COPY . .
-
-EXPOSE 5173
-
-CMD ["npm", "run", "dev"]
+FROM nginx:alpine
+COPY --from=build /app/build /usr/share/nginx/html
