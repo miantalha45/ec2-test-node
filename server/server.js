@@ -1,10 +1,13 @@
 // server.js
 
 const express = require("express");
+const cors = require("cors");
 const app = express();
 
 // Middleware to parse JSON
+app.use(cors());
 app.use(express.json());
+
 
 // Basic route
 app.get("/", (req, res) => {
